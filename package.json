@@ -7,7 +7,7 @@
     "start": "npm run compile && node dist/index",
     "compile": "babel -d dist/ src/",
     "dev": "babel-node src/index",
-    "test": "mocha --compilers js:babel-register",
+    "test": "mocha --compilers js:babel-register --recursive",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Supasate Choochaisri",
@@ -19,6 +19,9 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.8.0",
     "chai": "^3.5.0",
+    "chai-jquery": "^2.0.0",
+    "jquery": "^2.2.3",
+    "jsdom": "^9.0.0",
     "mocha": "^2.4.5"
   }
 }
