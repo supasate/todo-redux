@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index",
-    "test": "mocha --compilers js:babel-core/register",
+    "start": "npm run compile && node dist/index",
+    "compile": "babel -d dist/ src/",
+    "dev": "babel-node src/index",
+    "test": "mocha --compilers js:babel-register",
     "test:watch": "npm run test -- --watch"
   },
   "author": "Supasate Choochaisri",
