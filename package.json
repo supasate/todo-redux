@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run compile && node dist/index",
-    "compile": "babel -d dist/ src/",
+    "start": "npm run build && node dist/index",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run test",
+    "build": "babel -d dist/ src/",
     "dev": "babel-node src/index",
     "test": "mocha --compilers js:babel-register --recursive",
     "test:watch": "npm run test -- --watch"
