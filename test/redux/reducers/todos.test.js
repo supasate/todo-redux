@@ -30,4 +30,30 @@ describe('Todo Reducer', () => {
     };
     expect(todoReducer(curState, action)).to.deep.equal(expectedState);
   });
+
+  it('should update old msg to new msg when receiving UPDATE_TODO action', () => {
+    const curState = {
+      todos: [
+        { text: 'Jogging', status: 'incompleted' },
+        { text: 'Buy Coffee', status: 'completed' }
+      ]
+    };
+
+    const action = {
+      type: types.UPDATE_TODO,
+      payload: {
+        oldMsg: 'Buy Coffee',
+        newMsg: 'Drink Coffee'
+      }
+    };
+
+    const expectedState = {
+      todos: [
+        { text: 'Jogging', status: 'incompleted' },
+        { text: 'Drink Coffee', status: 'completed' }
+      ]
+    };
+
+    expect(todoReducer(curState, action)).to.deep.equal(expectedState);
+  });
 });
