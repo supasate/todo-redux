@@ -1,6 +1,6 @@
 import { expect } from '../../test_helper';
 import * as types from '../../../src/redux/actions/types';
-import { addTodo, updateTodo } from '../../../src/redux/actions/todos';
+import { addTodo, updateTodo, deleteTodo } from '../../../src/redux/actions/todos';
 
 describe('todos action', () => {
   it('should create action with type ADD_TODO', () => {
@@ -22,5 +22,13 @@ describe('todos action', () => {
       }
     };
     expect(action).to.deep.equal(expectedAction);
+  });
+
+  it('should create action with type DELETE_TODO', () => {
+    const action = deleteTodo('Buy Coffee');
+    const exepectedAction = {
+      type: types.DELETE_TODO,
+      payload: 'Buy Coffee'
+    };
   });
 });

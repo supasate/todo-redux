@@ -1,4 +1,4 @@
-import { ADD_TODO, UPDATE_TODO } from './types';
+import { ADD_TODO, UPDATE_TODO, DELETE_TODO } from './types';
 
 const addTodo = (msg) => {
   return {
@@ -17,7 +17,15 @@ const updateTodo = (oldMsg, newMsg) => {
   };
 };
 
+const deleteTodo = (msg) => {
+  return {
+    type: DELETE_TODO,
+    payload: msg
+  };
+};
+
 export {
   addTodo,
   updateTodo,
-}
+  deleteTodo,
+};
