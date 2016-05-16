@@ -5,10 +5,15 @@ describe('TodoItem', () => {
   let component;
 
   beforeEach(() => {
-    component = renderComponent(TodoItem);
+    const props = { text: 'Read a book', status: 'completed' };
+    component = renderComponent(TodoItem, props);
   });
 
   it('has a correct class', () => {
     expect(component).to.have.class('todo-item');
   });
+
+  it('has the provided text', () => {
+    expect(component).to.contain('Read a book');
+  })
 });

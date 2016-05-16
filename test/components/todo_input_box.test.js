@@ -8,7 +8,7 @@ describe('TodoInputBox', () => {
     component = renderComponent(TodoInputBox);
   });
 
-  it('has correct class', () => {
+  it('has a correct class', () => {
     expect(component).to.have.class('todo-input-box')
   });
 
