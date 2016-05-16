@@ -13,6 +13,6 @@ describe('TodoList', () => {
   });
 
   it('contains a <ul> tag', () => {
-    expect(component.find('ul')).to.exist;
+    expect(component.is('ul')).to.be.true;
   });
 });
