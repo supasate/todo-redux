@@ -4,7 +4,7 @@ import * as types from '../../../src/redux/actions/types';
 
 describe('Todo Reducer', () => {
   it('should return correct initial state', () => {
-    const expectedState = { todos: [] }
+    const expectedState = { todo: '', todos: [] }
     expect(todoReducer(undefined, {})).to.deep.equal(expectedState);
   });
 

@@ -2,7 +2,10 @@ import * as types from '../actions/types';
 
 const reducer = (state, action) => {
   if (!state) {
-    return { todos: []};
+    return {
+      todo: '',
+      todos: []
+    };
   }
   switch (action.type) {
     case types.ADD_TODO:
@@ -26,7 +29,8 @@ const reducer = (state, action) => {
         { text: action.payload.newMsg, status: state.todos[matchedIdx].status },
         ...state.todos.slice(matchedIdx + 1)
       ];
-      return { todos: todos }
+      state.todos = todos;
+      return state
   }
   return state;
 };
