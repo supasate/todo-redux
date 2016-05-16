@@ -1,22 +1,13 @@
 import * as types from '../actions/types';
 
-const reducer = (state, action) => {
-  if (!state) {
-    return {
-      todo: '',
-      todos: []
-    };
-  }
+const reducer = (state = [], action) => {
   switch (action.type) {
     case types.ADD_TODO:
-      state.todos = state.todos.concat([
-        { text: action.payload, status: 'incompleted' }
-      ]);
-      return state;
+      return [ ...state, { text: action.payload, status: 'incompleted' } ];
 
     case types.UPDATE_TODO:
       let matchedIdx = -1;
-      state.todos.every(function (todo, idx) {
+      state.every(function (todo, idx) {
         if (todo.text === action.payload.oldMsg) {
           matchedIdx = idx
           return false;
@@ -24,13 +15,11 @@ const reducer = (state, action) => {
 
         return true;
       });
-      const todos = [
-        ...state.todos.slice(0, matchedIdx),
-        { text: action.payload.newMsg, status: state.todos[matchedIdx].status },
-        ...state.todos.slice(matchedIdx + 1)
+      return [
+        ...state.slice(0, matchedIdx),
+        { text: action.payload.newMsg, status: state[matchedIdx].status },
+        ...state.slice(matchedIdx + 1)
       ];
-      state.todos = todos;
-      return state
   }
   return state;
 };
