@@ -1,9 +1,15 @@
-function add(a, b) {
-  return a + b;
+/*import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+
+class App extends Component {
+  render() {
+    return (
+      <div>Hello, World</div>
+    );
+  }
 }
 
-function subtract(a, b) {
-  return a - b;
-}
+ReactDOM.render(<App />, document.getElementById('root'));*/
 
-export { add, subtract };
+import { add } from './func';
+document.write(add(10, 20));
