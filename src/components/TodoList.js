@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import TodoItem from './TodoItem';
+import { connect } from 'react-redux';
 
 class TodoList extends Component {
+
   render() {
+    const list = this.props.todos.map(todo => <li key={todo.text}><TodoItem text={todo.text} /></li>);
+
     return (
-      <div className="todo-list">
-        <ul>
-          <li><TodoItem /></li>
-          <li><TodoItem /></li>
-          <li><TodoItem /></li>
-        </ul>
-      </div>
+      <ul className="todo-list">
+        {list}
+      </ul>
     );
   }
 }
 
-export default TodoList;
+const mapStateToProps = (state) => {
+  return { todos: state.todos };
+};
+
+export default connect(mapStateToProps)(TodoList);
