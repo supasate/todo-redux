@@ -1,15 +1,17 @@
-/*import React, { Component } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import TodoInputBox from './components/TodoInputBox';
+import TodoList from './components/TodoList';
 
 class App extends Component {
   render() {
     return (
-      <div>Hello, World</div>
+      <div>
+        <TodoInputBox />
+        <TodoList />
+      </div>
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));*/
-
-import { add } from './func';
-document.write(add(10, 20));
+ReactDOM.render(<App />, document.getElementById('root'));
