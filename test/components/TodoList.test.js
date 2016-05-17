@@ -30,4 +30,11 @@ describe('TodoList', () => {
     expect(component).to.contain('Drink Coffee');
     expect(component).to.contain('Read a book');
   });
+
+  it('deletes a todo after clicking the delete mark', () => {
+    component.find('li > div:contains("Read a book") > span.todo-item-delete').simulate('click');
+
+    expect(component).to.not.contain('Read a book');
+    expect(component).to.contain('Drink Coffee');
+  });
 });

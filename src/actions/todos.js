@@ -1,26 +1,27 @@
 import { ADD_TODO, UPDATE_TODO, DELETE_TODO } from './types';
 
+let nextTodoId = 1;
+
 const addTodo = (msg) => {
   return {
     type: ADD_TODO,
+    id: nextTodoId++,
     payload: msg
   };
 };
 
-const updateTodo = (oldMsg, newMsg) => {
+const updateTodo = (id, newMsg) => {
   return {
     type: UPDATE_TODO,
-    payload: {
-      oldMsg,
-      newMsg
-    }
+    id,
+    payload: newMsg
   };
 };
 
-const deleteTodo = (msg) => {
+const deleteTodo = (id) => {
   return {
     type: DELETE_TODO,
-    payload: msg
+    id
   };
 };
 

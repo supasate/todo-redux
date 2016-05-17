@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 class TodoList extends Component {
 
   render() {
-    const list = this.props.todos.map(todo => <li key={todo.text}><TodoItem text={todo.text} /></li>);
+    const list = this.props.todos.map(todo =>
+      <li key={todo.text}><TodoItem id={todo.id} text={todo.text} /></li>);
 
     return (
       <ul className="todo-list">

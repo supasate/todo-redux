@@ -10,40 +10,39 @@ describe('Todo Reducer', () => {
 
   it('should add new todo when receiving ADD_TODO action', () => {
     const curState = [
-        { text: 'Buy Coffee', status: 'completed' },
-        { text: 'Jogging', status: 'incompleted' },
+        { id: 1, text: 'Buy Coffee', status: 'completed' },
+        { id: 2, text: 'Jogging', status: 'incompleted' },
     ];
 
     const action = {
       type: types.ADD_TODO,
+      id: 3,
       payload: 'Read Book'
     };
 
     const expectedState = [
-        { text: 'Buy Coffee', status: 'completed' },
-        { text: 'Jogging', status: 'incompleted' },
-        { text: 'Read Book', status: 'incompleted' },
+        { id: 1, text: 'Buy Coffee', status: 'completed' },
+        { id: 2, text: 'Jogging', status: 'incompleted' },
+        { id: 3, text: 'Read Book', status: 'incompleted' },
     ];
     expect(todoReducer(curState, action)).to.deep.equal(expectedState);
   });
 
   it('should update old msg to new msg when receiving UPDATE_TODO action', () => {
     const curState = [
-        { text: 'Jogging', status: 'incompleted' },
-        { text: 'Buy Coffee', status: 'completed' }
+        { id: 1, text: 'Jogging', status: 'incompleted' },
+        { id: 2, text: 'Buy Coffee', status: 'completed' }
       ];
 
     const action = {
       type: types.UPDATE_TODO,
-      payload: {
-        oldMsg: 'Buy Coffee',
-        newMsg: 'Drink Coffee'
-      }
+      id: 2,
+      payload: 'Drink Coffee'
     };
 
     const expectedState = [
-        { text: 'Jogging', status: 'incompleted' },
-        { text: 'Drink Coffee', status: 'completed' }
+        { id: 1, text: 'Jogging', status: 'incompleted' },
+        { id: 2, text: 'Drink Coffee', status: 'completed' }
     ];
 
     expect(todoReducer(curState, action)).to.deep.equal(expectedState);
