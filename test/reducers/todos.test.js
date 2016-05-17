@@ -47,4 +47,24 @@ describe('Todo Reducer', () => {
 
     expect(todoReducer(curState, action)).to.deep.equal(expectedState);
   });
+
+  it('should delete a todo with given id', () => {
+    const curState = [
+      { id: 1, text: 'Joggin', status: 'incompleted' },
+      { id: 2, text: 'Drink Coffee', status: 'completed' },
+      { id: 3, text: 'Watch Movie', status: 'incompleted' }
+    ];
+
+    const action = {
+      type: types.DELETE_TODO,
+      id: 2
+    };
+
+    const expectedState = [
+      { id: 1, text: 'Joggin', status: 'incompleted' },
+      { id: 3, text: 'Watch Movie', status: 'incompleted' }
+    ];
+
+    expect(todoReducer(curState, action)).to.deep.equal(expectedState);
+  });
 });

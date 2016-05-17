@@ -19,6 +19,19 @@ const reducer = (state = [], action) => {
         { id: action.id, text: action.payload, status: state[matchedIdx].status },
         ...state.slice(matchedIdx + 1)
       ];
+
+    case types.DELETE_TODO:
+      let deletedIdx = -1;
+
+      state.forEach((todo, idx) => {
+        if (todo.id === action.id) {
+          deletedIdx = idx
+        }
+      });
+      return [
+        ...state.slice(0, deletedIdx),
+        ...state.slice(deletedIdx + 1)
+      ];
   }
   return state;
 };
