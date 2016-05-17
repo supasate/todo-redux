@@ -1,5 +1,5 @@
 import { expect } from '../test_helper';
-import { reducer as todoReducer } from '../../src/reducers/todos';
+import todoReducer from '../../src/reducers/todos';
 import * as types from '../../src/actions/types';
 
 describe('Todo Reducer', () => {
