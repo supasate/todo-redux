@@ -1,6 +1,6 @@
-import { expect } from '../../test_helper';
-import * as types from '../../../src/redux/actions/types';
-import { addTodo, updateTodo, deleteTodo } from '../../../src/redux/actions/todos';
+import { expect } from '../test_helper';
+import * as types from '../../src/actions/types';
+import { addTodo, updateTodo, deleteTodo } from '../../src/actions/todos';
 
 describe('todos action', () => {
   it('should create action with type ADD_TODO', () => {

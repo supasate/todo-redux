@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../redux/actions/todos';
+import * as actions from '../actions/todos';
 
 class TodoInputBox extends Component {
   constructor(props) {

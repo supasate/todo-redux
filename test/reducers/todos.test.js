@@ -1,6 +1,6 @@
-import { expect } from '../../test_helper';
-import { reducer as todoReducer } from '../../../src/redux/reducers/todos';
-import * as types from '../../../src/redux/actions/types';
+import { expect } from '../test_helper';
+import { reducer as todoReducer } from '../../src/reducers/todos';
+import * as types from '../../src/actions/types';
 
 describe('Todo Reducer', () => {
   it('should return correct initial state', () => {
