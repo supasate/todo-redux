@@ -36,12 +36,13 @@ const reducer = (state = [], action) => {
     case types.TOGGLE_TODO:
       let toggledIdx = findTodoById(state, action.id);
       let toggledTodo = Object.assign({}, state[toggledIdx]);
-      
+
       if (toggledTodo.status === 'incomplete') {
         toggledTodo.status = 'completed';
       } else {
         toggledTodo.status = 'incomplete';
       }
+
       return [
         ...state.slice(0, toggledIdx),
         toggledTodo,

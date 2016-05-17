@@ -2,6 +2,6 @@ body {
   background-color: #fafafa;
 }
 
-.todo-item.todo-complted {
+.todo-item.todo-completed {
   text-decoration: line-through;
 }

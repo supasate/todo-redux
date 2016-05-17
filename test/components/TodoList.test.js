@@ -5,13 +5,13 @@ describe('TodoList', () => {
   let component;
 
   beforeEach(() => {
-    const props = {
+    const state = {
       todos: [
-        { id: 1, text: 'Drink Coffee', status: 'incompleted' },
+        { id: 1, text: 'Drink Coffee', status: 'incomplete' },
         { id: 2, text: 'Read a book', status: 'completed' }
       ]
     };
-    component = renderComponent(TodoList, null, props);
+    component = renderComponent(TodoList, null, state);
   })
 
   it('has a correct class', () => {
@@ -29,6 +29,17 @@ describe('TodoList', () => {
   it('shows each todo that is provided', () => {
     expect(component).to.contain('Drink Coffee');
     expect(component).to.contain('Read a book');
+  });
+
+  it('toggles status wheck clicking each todo', () => {
+    let selectedTodo = component.find('li > div:contains("Drink Coffee")');
+    expect(selectedTodo).to.not.have.class('todo-completed');
+
+    selectedTodo.simulate('click');
+    expect(selectedTodo).to.have.class('todo-completed');
+
+    selectedTodo.simulate('click');
+    expect(selectedTodo).to.not.have.class('todo-completed');
   });
 
   it('deletes a todo after clicking the delete mark', () => {
