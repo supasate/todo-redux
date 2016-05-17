@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import * as types from '../actions/types';
 
 const findTodoById = (todos, id) => {
@@ -14,14 +15,18 @@ const findTodoById = (todos, id) => {
 const reducer = (state = [], action) => {
   switch (action.type) {
     case types.ADD_TODO:
-      return [ ...state, { id: action.id, text: action.payload, status: 'incomplete' } ];
+      let addedTodo = { id: action.id, text: action.payload, status: 'incomplete' }
+
+      return [ ...state, addedTodo ];
 
     case types.UPDATE_TODO:
       let updatedIdx = findTodoById(state, action.id);
+      let updatedTodo = _.cloneDeep(state[updatedIdx]);
+      updatedTodo.text = action.payload;
 
       return [
         ...state.slice(0, updatedIdx),
-        { id: action.id, text: action.payload, status: state[updatedIdx].status },
+        updatedTodo,
         ...state.slice(updatedIdx + 1)
       ];
 
@@ -35,7 +40,7 @@ const reducer = (state = [], action) => {
 
     case types.TOGGLE_TODO:
       let toggledIdx = findTodoById(state, action.id);
-      let toggledTodo = Object.assign({}, state[toggledIdx]);
+      let toggledTodo = _.cloneDeep(state[toggledIdx]);
 
       if (toggledTodo.status === 'incomplete') {
         toggledTodo.status = 'completed';
