@@ -5,7 +5,7 @@ describe('TodoItem', () => {
   let component;
 
   beforeEach(() => {
-    const props = { id: 1, text: 'Read a book', status: 'incompleted' };
+    const props = { id: 1, text: 'Read a book', status: 'incomplete' };
     component = renderComponent(TodoItem, props);
   });
 
@@ -22,7 +22,7 @@ describe('TodoItem', () => {
   })
 
   describe('status checking', () => {
-    it('does not has a completed class if the staus is incomplete', () => {
+    it('does not has a completed class if the status is incomplete', () => {
       expect(component).to.not.have.class('todo-completed');
     });
 
