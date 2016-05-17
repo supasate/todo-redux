@@ -19,17 +19,6 @@ const reducer = (state = [], action) => {
 
       return [ ...state, addedTodo ];
 
-    case types.UPDATE_TODO:
-      let updatedIdx = findTodoById(state, action.id);
-      let updatedTodo = _.cloneDeep(state[updatedIdx]);
-      updatedTodo.text = action.payload;
-
-      return [
-        ...state.slice(0, updatedIdx),
-        updatedTodo,
-        ...state.slice(updatedIdx + 1)
-      ];
-
     case types.DELETE_TODO:
       let deletedIdx = findTodoById(state, action.id);
 

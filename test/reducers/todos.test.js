@@ -45,32 +45,6 @@ describe('Todo Reducer', () => {
     });
   });
 
-  describe('update', () => {
-    let resultState;
-
-    beforeEach(() => {
-      const action = {
-        type: types.UPDATE_TODO,
-        id: 2,
-        payload: 'Drink Juice'
-      };
-      resultState = todoReducer(curState, action);
-    });
-
-    it('should update old msg to new msg when receiving UPDATE_TODO action', () => {
-      const expectedState = [
-        { id: 1, text: 'Joggin', status: 'incomplete' },
-        { id: 2, text: 'Drink Juice', status: 'completed' },
-        { id: 3, text: 'Watch Movie', status: 'incomplete' }
-      ];
-      expect(resultState).to.deep.equal(expectedState);
-    });
-
-    it('should not return the same reference of state', () => {
-      expect(resultState).to.not.equal(curState);
-    });
-  });
-
   describe('delete', () => {
     let resultState;
 

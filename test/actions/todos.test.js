@@ -13,16 +13,6 @@ describe('todos action', () => {
     expect(action).to.deep.equal(expectedAction);
   });
 
-  it('should create action with type UPDATE_TODO', () => {
-    const action = updateTodo(1, 'Drink Coffee');
-    const expectedAction = {
-      type: types.UPDATE_TODO,
-      id: 1,
-      payload: 'Drink Coffee'
-    };
-    expect(action).to.deep.equal(expectedAction);
-  });
-
   it('should create action with type DELETE_TODO', () => {
     const action = deleteTodo(1);
     const expectedAction = {
