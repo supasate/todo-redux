@@ -16,4 +16,8 @@ describe('TodoItem', () => {
   it('has the provided text', () => {
     expect(component).to.contain('Read a book');
   })
+
+  it('has a delete button', () => {
+    expect(component.find('.todo-item-delete')).to.exist;
+  })
 });

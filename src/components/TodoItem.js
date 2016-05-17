@@ -5,6 +5,7 @@ class TodoItem extends Component {
     return (
       <div className="todo-item">
         {this.props.text}
+        <span className="todo-item-delete"> [x]</span>
       </div>
     );
   };
