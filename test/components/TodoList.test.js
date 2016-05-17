@@ -7,8 +7,8 @@ describe('TodoList', () => {
   beforeEach(() => {
     const props = {
       todos: [
-        { text: 'Drink Coffee', status: 'incompleted' },
-        { text: 'Read a book', status: 'completed' }
+        { id: 1, text: 'Drink Coffee', status: 'incompleted' },
+        { id: 2, text: 'Read a book', status: 'completed' }
       ]
     };
     component = renderComponent(TodoList, null, props);

@@ -5,7 +5,7 @@ describe('TodoItem', () => {
   let component;
 
   beforeEach(() => {
-    const props = { text: 'Read a book', status: 'completed' };
+    const props = { id: 1, text: 'Read a book', status: 'completed' };
     component = renderComponent(TodoItem, props);
   });
 
