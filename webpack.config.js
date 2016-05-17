@@ -10,6 +10,10 @@ module.exports = {
       {
         test: /\.jsx?$/,
         loader: 'babel'
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css'
       }
     ]
   }
