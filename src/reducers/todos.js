@@ -7,13 +7,13 @@ const reducer = (state = [], action) => {
 
     case types.UPDATE_TODO:
       let matchedIdx = -1;
-      state.every(function (todo, idx) {
+      
+      state.forEach((todo, idx) => {
         if (todo.id === action.id) {
           matchedIdx = idx
-          return false;
         }
-        return true;
       });
+
       return [
         ...state.slice(0, matchedIdx),
         { id: action.id, text: action.payload, status: state[matchedIdx].status },
@@ -28,6 +28,7 @@ const reducer = (state = [], action) => {
           deletedIdx = idx
         }
       });
+
       return [
         ...state.slice(0, deletedIdx),
         ...state.slice(deletedIdx + 1)
