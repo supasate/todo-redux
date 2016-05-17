@@ -11,7 +11,7 @@ describe('Todo Reducer', () => {
   it('should add new todo when receiving ADD_TODO action', () => {
     const curState = [
         { id: 1, text: 'Buy Coffee', status: 'completed' },
-        { id: 2, text: 'Jogging', status: 'incompleted' },
+        { id: 2, text: 'Jogging', status: 'incomplete' },
     ];
 
     const action = {
@@ -22,15 +22,15 @@ describe('Todo Reducer', () => {
 
     const expectedState = [
         { id: 1, text: 'Buy Coffee', status: 'completed' },
-        { id: 2, text: 'Jogging', status: 'incompleted' },
-        { id: 3, text: 'Read Book', status: 'incompleted' },
+        { id: 2, text: 'Jogging', status: 'incomplete' },
+        { id: 3, text: 'Read Book', status: 'incomplete' },
     ];
     expect(todoReducer(curState, action)).to.deep.equal(expectedState);
   });
 
   it('should update old msg to new msg when receiving UPDATE_TODO action', () => {
     const curState = [
-        { id: 1, text: 'Jogging', status: 'incompleted' },
+        { id: 1, text: 'Jogging', status: 'incomplete' },
         { id: 2, text: 'Buy Coffee', status: 'completed' }
       ];
 
@@ -41,7 +41,7 @@ describe('Todo Reducer', () => {
     };
 
     const expectedState = [
-        { id: 1, text: 'Jogging', status: 'incompleted' },
+        { id: 1, text: 'Jogging', status: 'incomplete' },
         { id: 2, text: 'Drink Coffee', status: 'completed' }
     ];
 
@@ -50,9 +50,9 @@ describe('Todo Reducer', () => {
 
   it('should delete a todo with given id', () => {
     const curState = [
-      { id: 1, text: 'Joggin', status: 'incompleted' },
+      { id: 1, text: 'Joggin', status: 'incomplete' },
       { id: 2, text: 'Drink Coffee', status: 'completed' },
-      { id: 3, text: 'Watch Movie', status: 'incompleted' }
+      { id: 3, text: 'Watch Movie', status: 'incomplete' }
     ];
 
     const action = {
@@ -61,8 +61,29 @@ describe('Todo Reducer', () => {
     };
 
     const expectedState = [
-      { id: 1, text: 'Joggin', status: 'incompleted' },
-      { id: 3, text: 'Watch Movie', status: 'incompleted' }
+      { id: 1, text: 'Joggin', status: 'incomplete' },
+      { id: 3, text: 'Watch Movie', status: 'incomplete' }
+    ];
+
+    expect(todoReducer(curState, action)).to.deep.equal(expectedState);
+  });
+
+  it('should toggle a todo status with given id', () => {
+    const curState = [
+      { id: 1, text: 'Joggin', status: 'incomplete' },
+      { id: 2, text: 'Drink Coffee', status: 'completed' },
+      { id: 3, text: 'Watch Movie', status: 'incomplete' }
+    ];
+
+    const action = {
+      type: types.TOGGLE_TODO,
+      id: 1
+    };
+
+    const expectedState = [
+      { id: 1, text: 'Joggin', status: 'completed' },
+      { id: 2, text: 'Drink Coffee', status: 'completed' },
+      { id: 3, text: 'Watch Movie', status: 'incomplete' }
     ];
 
     expect(todoReducer(curState, action)).to.deep.equal(expectedState);
