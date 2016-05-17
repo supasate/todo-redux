@@ -1,6 +1,6 @@
 import { expect } from '../test_helper';
 import * as types from '../../src/actions/types';
-import { addTodo, updateTodo, deleteTodo } from '../../src/actions/todos';
+import { addTodo, updateTodo, deleteTodo, toggleTodo } from '../../src/actions/todos';
 
 describe('todos action', () => {
   it('should create action with type ADD_TODO', () => {
@@ -31,4 +31,12 @@ describe('todos action', () => {
     };
     expect(action).to.deep.equal(expectedAction);
   });
+
+  it('should create action with type TOGGLE_TODO', () => {
+    const action = toggleTodo(1);
+    const expectedAction = {
+      type: types.TOGGLE_TODO,
+      id: 1
+    };
+  })
 });

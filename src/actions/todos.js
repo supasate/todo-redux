@@ -1,4 +1,4 @@
-import { ADD_TODO, UPDATE_TODO, DELETE_TODO } from './types';
+import { ADD_TODO, UPDATE_TODO, DELETE_TODO, TOGGLE_TODO } from './types';
 
 let nextTodoId = 1;
 
@@ -25,8 +25,16 @@ const deleteTodo = (id) => {
   };
 };
 
+const toggleTodo = (id) => {
+  return {
+    type: TOGGLE_TODO,
+    id
+  };
+};
+
 export {
   addTodo,
   updateTodo,
   deleteTodo,
+  toggleTodo,
 };
