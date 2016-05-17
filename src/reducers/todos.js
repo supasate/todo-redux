@@ -1,7 +1,7 @@
 import * as types from '../actions/types';
 
 const findTodoById = (todos, id) => {
-  let matchedIdx = -1
+  let matchedIdx = todos.length;
   todos.forEach((todo, idx) => {
     if (todo.id === id) {
       matchedIdx = idx;

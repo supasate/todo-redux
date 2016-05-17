@@ -8,14 +8,18 @@ class TodoItem extends Component {
     this.props.toggleTodo(this.props.id);
   }
 
+  handleOnDelete(event) {
+    this.props.deleteTodo(this.props.id);
+  }
+
   render() {
     let itemClass = 'todo-item';
     if (this.props.status === 'completed') itemClass += ' todo-completed';
 
     return (
-      <div className={itemClass} id={this.props.id} onClick={this.handleOnClick.bind(this)}>
-        {this.props.text}
-        <span className="todo-item-delete"> [x]</span>
+      <div className={itemClass} id={this.props.id} >
+        <span className="todo-item-text" onClick={this.handleOnClick.bind(this)}>{this.props.text}</span>
+        <span className="todo-item-delete" onClick={this.handleOnDelete.bind(this)}> [x]</span>
       </div>
     );
   };

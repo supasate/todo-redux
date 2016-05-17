@@ -35,10 +35,10 @@ describe('TodoList', () => {
     let selectedTodo = component.find('li > div:contains("Drink Coffee")');
     expect(selectedTodo).to.not.have.class('todo-completed');
 
-    selectedTodo.simulate('click');
+    selectedTodo.find('span').simulate('click');
     expect(selectedTodo).to.have.class('todo-completed');
 
-    selectedTodo.simulate('click');
+    selectedTodo.find('span').simulate('click');
     expect(selectedTodo).to.not.have.class('todo-completed');
   });
 
