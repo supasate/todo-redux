@@ -6,7 +6,7 @@ class TodoList extends Component {
 
   render() {
     const list = this.props.todos.map(todo =>
-      <li key={todo.text}><TodoItem id={todo.id} text={todo.text} /></li>);
+      <li key={todo.id}><TodoItem {...todo} /></li>);
 
     return (
       <ul className="todo-list">
