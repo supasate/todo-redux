@@ -2,7 +2,7 @@ import { expect } from '../test_helper';
 import * as types from '../../src/actions/types';
 import { addTodo, updateTodo, deleteTodo, toggleTodo } from '../../src/actions/todos';
 
-describe('todos action', () => {
+describe('Todo Actions', () => {
   it('should create action with type ADD_TODO', () => {
     const action = addTodo('Buy Coffee');
     const expectedAction = {
