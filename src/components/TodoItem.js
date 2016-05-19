@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/todos';
 import cx from 'classnames';
 
-class TodoItem extends Component {
+export class TodoItem extends Component {
   handleOnClick(event) {
     this.props.toggleTodo(this.props.id);
   }

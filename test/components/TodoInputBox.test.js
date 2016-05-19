@@ -1,12 +1,15 @@
 import { renderComponent, expect, spy } from '../test_helper';
-import TodoInputBox from '../../src/components/TodoInputBox';
-import * as actions from '../../src/actions/todos';
+import { TodoInputBox } from '../../src/components/TodoInputBox';
 
 describe('TodoInputBox', () => {
   let component;
+  let props;
 
   beforeEach(() => {
-    component = renderComponent(TodoInputBox);
+    props = {
+      addTodo: spy()
+    }
+    component = renderComponent(TodoInputBox, props);
   });
 
   it('has a correct class', () => {
@@ -22,23 +25,17 @@ describe('TodoInputBox', () => {
   });
 
   describe('add a new todo', () => {
-    let callbackSpy;
-
     beforeEach(() => {
-      callbackSpy = spy(actions, 'addTodo');
       component.find('input').simulate('change', 'Drink Coffee');
-    });
-
-    afterEach(() => {
-      actions.addTodo.restore();
-    });
-
-    it('dispatch ADD_TODO action', () => {
-      expect(callbackSpy).to.have.been.called;
     });
 
     it('shows the text in input box', () => {
       expect(component.find('input')).to.have.value('Drink Coffee');
+    });
+
+    it('dispatch ADD_TODO action', () => {
+      component.simulate('submit');
+      expect(props.addTodo).to.have.been.calledWith('Drink Coffee');
     });
 
     it('clears the input box when clicking the add button', () => {
