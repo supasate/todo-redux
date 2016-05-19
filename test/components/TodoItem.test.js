@@ -1,12 +1,14 @@
-import { renderComponent, expect } from '../test_helper';
+import { renderComponent, expect, spy } from '../test_helper';
 import TodoItem from '../../src/components/TodoItem';
+import * as actions from '../../src/actions/todos';
 
 describe('TodoItem', () => {
   let component;
 
   beforeEach(() => {
     const props = { id: 1, text: 'Read a book', status: 'incomplete' };
-    component = renderComponent(TodoItem, props);
+    const state = { todos: [props] };
+    component = renderComponent(TodoItem, props, state);
   });
 
   it('has a correct class', () => {
@@ -31,6 +33,22 @@ describe('TodoItem', () => {
       let completedTodoComponent = renderComponent(TodoItem, completedProps);
 
       expect(completedTodoComponent).to.have.class('todo-completed');
+    });
+  });
+
+  describe('Dispacthing', () => {
+    it('should dispatch DELETE_TODO when clicking [x] mark', () => {
+      let callbackSpy = spy(actions, 'deleteTodo');
+      component.find('.todo-item-delete').simulate('click');
+      expect(callbackSpy).to.have.been.called;
+      actions.deleteTodo.restore();
+    });
+
+    it('should dispatch TOGGLE_TODO when clicking itself', () => {
+      let callbackSpy = spy(actions, 'toggleTodo');
+      component.find('.todo-item-text').simulate('click');
+      expect(callbackSpy).to.have.been.called;
+      actions.toggleTodo.restore();
     });
   });
 });

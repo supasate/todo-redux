@@ -1,5 +1,6 @@
-import { renderComponent, expect } from '../test_helper';
+import { renderComponent, expect, spy } from '../test_helper';
 import TodoInputBox from '../../src/components/TodoInputBox';
+import * as actions from '../../src/actions/todos';
 
 describe('TodoInputBox', () => {
   let component;
@@ -21,8 +22,19 @@ describe('TodoInputBox', () => {
   });
 
   describe('add a new todo', () => {
+    let callbackSpy;
+
     beforeEach(() => {
+      callbackSpy = spy(actions, 'addTodo');
       component.find('input').simulate('change', 'Drink Coffee');
+    });
+
+    afterEach(() => {
+      actions.addTodo.restore();
+    });
+
+    it('dispatch ADD_TODO action', () => {
+      expect(callbackSpy).to.have.been.called;
     });
 
     it('shows the text in input box', () => {

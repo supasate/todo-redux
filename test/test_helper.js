@@ -5,6 +5,7 @@ import TestUtils from 'react-addons-test-utils';
 import jsdom from 'jsdom';
 import chai, { expect } from 'chai';
 import chaiJquery from 'chai-jquery';
+import { spy } from 'sinon';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import reducers from '../src/reducers';
@@ -32,4 +33,4 @@ $.fn.simulate = function(eventName, value) {
   TestUtils.Simulate[eventName](this[0]);
 }
 
-export { renderComponent, expect };
+export { renderComponent, expect, spy };
