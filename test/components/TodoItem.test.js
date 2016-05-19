@@ -29,11 +29,11 @@ describe('TodoItem', () => {
   })
 
   describe('status checking', () => {
-    it('does not has a completed class if the status is incomplete', () => {
+    it('does not has a `todo-completed` class if the status is incomplete', () => {
       expect(component).to.not.have.class('todo-completed');
     });
 
-    it('has a completed class if the status is completed', () => {
+    it('has a `todo-completed` class if the status is completed', () => {
       const completedProps = { id: 1, text: 'Read a book', status: 'completed' };
       let completedTodoComponent = renderComponent(TodoItem, completedProps);
 
@@ -44,12 +44,12 @@ describe('TodoItem', () => {
   describe('Dispacthing', () => {
     it('should dispatch DELETE_TODO when clicking [x] mark', () => {
       component.find('.todo-item-delete').simulate('click');
-      expect(props.deleteTodo).to.have.been.calledWith(1);
+      expect(props.deleteTodo).to.have.been.called.with(1);
     });
 
     it('should dispatch TOGGLE_TODO when clicking itself', () => {
       component.find('.todo-item-text').simulate('click');
-      expect(props.toggleTodo).to.have.been.calledWith(1);
+      expect(props.toggleTodo).to.have.been.called.with(1);
     });
   });
 });

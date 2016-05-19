@@ -29,16 +29,16 @@ describe('TodoInputBox', () => {
       component.find('input').simulate('change', 'Drink Coffee');
     });
 
-    it('shows the text in input box', () => {
+    it('should show the text in input box', () => {
       expect(component.find('input')).to.have.value('Drink Coffee');
     });
 
-    it('dispatch ADD_TODO action', () => {
+    it('should dispatch ADD_TODO action', () => {
       component.simulate('submit');
-      expect(props.addTodo).to.have.been.calledWith('Drink Coffee');
+      expect(props.addTodo).to.have.been.called.with('Drink Coffee');
     });
 
-    it('clears the input box when clicking the add button', () => {
+    it('should clear the input box when clicking the add button', () => {
       component.simulate('submit');
       expect(component.find('input')).to.have.value('');
     });
