@@ -12,7 +12,9 @@ const findTodoById = (todos, id) => {
   return matchedIdx;
 };
 
-const reducer = (state = [], action) => {
+let initialState = [];
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case types.ADD_TODO:
       let addedTodo = { id: action.id, text: action.payload, status: 'incomplete' }
